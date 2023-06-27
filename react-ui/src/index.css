@@ -1,3 +1,8 @@
+:root {
+  background-color: #0227AB;
+  font-family: "arial", "helvetica","sans-serif";
+  color: #FFF;
+}
 
 .navbar {
   padding: 20px;
@@ -9,7 +14,7 @@
 }
 
 .navbar h1 {
-  color: #f1356d;
+  color: #FFF;
 }
 
 .navbar .links {
@@ -17,13 +22,14 @@
 }
 
 .navbar a {
+  color: #FFF;
   margin-left: 16px;
   text-decoration: none;
   padding: 6px;
 }
 
 .navbar a:hover{
-  color: #f1356d;
+  color: #efd351;
 }
 
 .content{
