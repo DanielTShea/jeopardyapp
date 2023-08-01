@@ -1,4 +1,5 @@
 const express = require('express');
+const {createGameController } = require('../controllers/gameController')
 
 const router = express.Router();
 
@@ -13,9 +14,7 @@ router.get('/:id', (req, res) =>{
 })
 
 //POST a new game
-router.post('/', (req, res) =>{
-    res.json({message: "create new game"});
-})
+router.post('/newgame', createGameController);
 
 //PUT a game
 router.put('/:id', (req, res) =>{

@@ -93,12 +93,9 @@ const NewGameRound2 = () =>{
 
 
     //Daily Double States
-    const [R1DD, setR1DD] = useState("111");
     const [R2DD, setR2DD] = useState("211")
 
-    //Final Question State
-    const[finalQuestion, setFinalQuestion] = useState("");
-    const[finalAnswer, setFinalAnswer] = useState("");
+    
  
 
     
@@ -207,11 +204,27 @@ const NewGameRound2 = () =>{
 
     return(
         <div>
-            <form>
-            
+            <form> 
             <div>
-                
                 <h2>Round 2</h2>
+                <div>
+                    <h2>Round 2 Daily Double</h2>
+                    <select 
+                    style={{width: "200px"}}
+                    value={R2DD}
+                    onChange={(e)=>setR2DD(e.target.value)}>
+                        {r2DDOptions.map((option)=>{
+                            return(
+                            <option
+                            value={option.qNumber}>
+                                {option.name}
+                            </option>
+                            )
+                        })}
+
+                    </select>
+                </div>
+                <br></br>
                     <div>
                     <Box sx={{width: '75%', typography: 'body1'}}>
                             <TabContext value={tabR2Value}>
@@ -490,59 +503,27 @@ const NewGameRound2 = () =>{
                                                             </Grid>
                                                     )
                                             })}
-                                
-                                                <Grid item xs={1}>
-                                                    <Box>
-                                                        <button>
-                                                            Save
-                                                        </button>
-                                                    </Box>
-                                                </Grid>
+                                            <Grid item xs={1}>
+                                                <Box>
+                                                    <button>
+                                                        Save and Continue
+                                                    </button>
+                                                </Box>
+                                            </Grid>
                                         </Grid>
                                     </form>
                                 </TabPanel>
                             </TabContext>
                         </Box>
                     </div>
-                    <div>
-                        <h2>Round 2 Daily Double</h2>
-                        <select 
-                        style={{width: "200px"}}
-                        value={R2DD}
-                        onChange={(e)=>setR2DD(e.target.value)}>
-                            {r2DDOptions.map((option)=>{
-                                return(
-                                <option
-                                value={option.qNumber}>
-                                    {option.name}
-                                </option>
-                                )
-                            })}
-
-                        </select>
-                    </div>
-                <h2>Final Question</h2>
+                    <br></br>
                     <div>
                         <Grid container spacing={2}>
-                            <Grid item xs={6}>
-                            <label>Final Question: </label>
-                            <textarea
-                            value={finalQuestion}
-                            onChange={(e) => setFinalQuestion(e.target.value)}>
-                            </textarea>
-                            </Grid>
-                            <Grid item xs={6}>
-                            <label>Final Answer: </label>
-                            <textarea
-                            value={finalAnswer}
-                            onChange={(e) => setFinalAnswer(e.target.value)}>
-                            </textarea>
-                            </Grid>
                             <Grid item xs={2}>
                                 <Button
                                     variant="contained"
                                     component={Link} 
-                                    to="/newgameround2"
+                                    to="/newgamefinalquestion"
                                     key="1"
                                     xs={{ my: 2, color: 'white', display: 'block' }}
                                     >
