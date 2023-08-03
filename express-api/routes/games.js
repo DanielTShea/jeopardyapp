@@ -1,5 +1,5 @@
 const express = require('express');
-const {createGameController } = require('../controllers/gameController')
+const {createGameController, latestGameController, updateGameController } = require('../controllers/gameController')
 
 const router = express.Router();
 
@@ -9,9 +9,12 @@ router.get('/', (req, res) => {
 })
 
 //GET single game
-router.get('/:id', (req, res) =>{
-    res.json({message: "GET single game"});
-})
+//router.get('/:id', (req, res) =>{
+//    res.json({message: "GET single game"});
+//})
+
+//Get latest game
+router.get('/latestgame', latestGameController);
 
 //POST a new game
 router.post('/newgame', createGameController);
@@ -22,9 +25,7 @@ router.put('/:id', (req, res) =>{
 })
 
 //PATCH a game
-router.patch('/:id', (req, res) =>{
-    res.json({message: "patch a game"});
-})
+router.patch('/updategame', updateGameController)
 
 //Delete
 router.delete('/:id', (req, res) =>{

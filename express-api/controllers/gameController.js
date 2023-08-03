@@ -1,15 +1,28 @@
-const { createGameService } = require('../services/gamesService')
+const { createGameService, latestGameService, updateGameService } = require('../services/gamesService')
 
 
 //Get all games
 
 //Get a single game
 
-//Create a new workout
-const createGameController = async(req, res) =>{
-    return(createGameService(req, res));
+//Get Latest Game
+const latestGameController = async(req, res) =>{
+    return await latestGameService(req, res);
 }
 
+//Create a new game
+const createGameController = async(req, res) =>{
+    return await createGameService(req, res);
+}
+
+//Update a Game
+const updateGameController = async(req,res) =>{
+    return await updateGameService(req, res);
+}
+
+
 module.exports = {
-    createGameController
+    createGameController,
+    latestGameController,
+    updateGameController
 }

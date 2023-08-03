@@ -9,9 +9,17 @@ const NewGame = () => {
     const navigate = useNavigate();
     const handleSubmit = (e) =>{
         e.preventDefault();
-        const newGameTitle = gameTitle;
+        const newGameTitle = {"title" : gameTitle};
         console.log(newGameTitle)
-        fetch('')
+        console.log(JSON.stringify(newGameTitle))
+
+        fetch('/api/games/newgame', {
+            method:'POST',
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(newGameTitle)
+        }).then(()=>{
+            console.log("new game added");
+        })
         navigate("/newgameround1");
     }
 
@@ -30,17 +38,8 @@ const NewGame = () => {
                     >
                     </input>
                     <button>
-                        Submit
+                        Create New Game
                     </button>
-                    <Button
-                        style={{flexGrow:1}}
-                        variant="contained"
-                        //onClick={handleSubmit}
-                        key="1"
-                        xs={{ my: 2, color: 'white', display: 'block' }}
-                        >
-                            Save and Continue
-                    </Button>
                 </form>
             </div>
         </div>

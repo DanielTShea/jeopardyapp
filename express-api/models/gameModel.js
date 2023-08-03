@@ -29,12 +29,25 @@ const questionSchema = new Schema({
     }
 }, {timestamps: true})
 
+//Category Schema
+const categorySchema = new Schema({
+    categoryNumber:{
+        type: Number,
+        require: true,
+    },
+    categoryTitle:{
+        type: String,
+        required: true,
+    }
+}, {timestamps: true})
+
 //Round Schema
 const roundSchema = new Schema({
     roundNumber:{
         type: Number,
         require: true,
     },
+    category: [categorySchema],
     question: [questionSchema],
 }, {timestamps: true})
 
@@ -60,5 +73,7 @@ const gameSchema = new Schema({
     finalQuestion: [finalQuestionSchema]
 }, {timestamps: true})
 
+const Game = mongoose.model('Game', gameSchema)
+const Round = mongoose.model('Round', roundSchema)
 
-module.exports = mongoose.model('Game', gameSchema);
+module.exports = {Game, Round}
